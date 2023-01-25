@@ -97,16 +97,222 @@ header #tile01 {
 
 
 @keyframes wave {
+
     0%,
     100% {
         clip-path: ellipse(100% 50% at 40% 20%);
     }
+
     50% {
         clip-path: ellipse(100% 40% at 70% 25%);
     }
 }
 
 /* header end*/
+
+/* popup start*/
+.popup-container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) ;
+    z-index: 4;
+    flex-direction: column;
+    color: black;
+    transition: 5s;
+}
+.popup-container.show {
+    display: flex;
+}
+
+.popup-container .background-popup {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(0 0 0 / 80%);
+    z-index: 2;
+}
+
+.popup-container .popup {
+    width: 80vw;
+    height: 80vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+}
+.popup-container .popup.show{
+    animation: popup .5s ease-out 0s forwards ;
+}
+@keyframes popup{
+    0%{
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100%{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.popup::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(255 255 255 / 100%);
+    box-shadow: 1px 1px 20px 10px black;
+    z-index: 3;
+    border-radius: 30px;
+}
+
+.popup .close{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: black;
+    border-radius: 10px;
+    font-size: 40px;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    z-index: 5;
+}
+.popup .close:hover{
+    background-color: var(--main-color);
+    color: white;
+}
+.popup .slider {
+    height: 40vh;
+    z-index: 4;
+    padding-top: 10px;
+}
+
+.popup .slider img {
+    border-radius: 10px;
+}
+
+.popup .slider .carousel.slide {
+    height: 100%;
+}
+
+.popup .slider .carousel-inner {
+    height: 100%;
+}
+
+.popup .slider .carousel-item {
+    height: 100%;
+}
+
+.popup .slider .w-100 {
+    width: 60% !important;
+    margin: 0 auto;
+}
+
+.popup .carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+    display: flex !important;
+}
+
+.popup .slider .carousel-control-next-icon,
+.popup .slider .carousel-control-prev-icon {
+    background-color: var(--main-color);
+    padding: 20px;
+    background-size: 25px;
+}
+
+.popup .content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 2;
+    z-index: 4;
+}
+
+.popup .title {
+    font-size: 1.75rem;
+    text-align: center;
+    color: var(--main-color);
+}
+
+.popup .text {
+    font-size: 1rem;
+    padding: 25px;
+    text-align: center;
+}
+
+.popup a {
+    text-decoration: none;
+}
+
+.popup a:hover {
+    text-decoration: none;
+    color: transparent;
+}
+
+.popup .btn {
+    display: flex;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 2rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup .btn.whatsapp {
+    border: 1px solid #4caf50;
+}
+
+.popup .btn span {
+    font-size: 1rem;
+    padding: 0px 10px;
+}
+
+@media (max-width:660px) {
+    .popup .title {
+        font-size: 1.3rem;
+    }
+
+    .popup .text {
+        font-size: 0.8rem;
+    }
+
+    .popup .btn {
+        font-size: 1.5rem;
+    }
+
+    .popup .btn span {
+        font-size: 0.8rem;
+    }
+    .popup .slider .carousel-control-next-icon,
+    .popup .slider .carousel-control-prev-icon {
+        padding: 15px;
+        background-size: 20px;
+    }
+}
+
+/* popup end*/
 
 /* start start*/
 
@@ -166,7 +372,7 @@ header #tile01 {
 
 @media(max-width:750px) {
     .start {
-        height: 65vh;
+        height: 60vh;
     }
 
     #mask {
@@ -191,7 +397,6 @@ header #tile01 {
     .start #tile01 {
         display: none;
     }
-
 }
 
 @keyframes wave-animation {
@@ -220,19 +425,28 @@ header #tile01 {
 }
 
 .services .service-item {
+    display: flex;
+    flex-direction: column;
     position: relative;
+    height: 350px;
     border-radius: 10px;
     box-shadow: 3px 2px 1px 3px var(--main-color);
     overflow: hidden;
+    cursor: pointer;
     transition: 0.5s;
 }
 
-.services .service-item img {
+.services .service-item .img {
+    flex-basis: 50%;
     width: 100%;
-    height: 50%;
+    height: 75%;
     border-radius: 10px;
     transition: 0.5s;
-
+}
+.services .service-item img {
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
 }
 
 .services .service-item:hover img {
@@ -245,6 +459,7 @@ header #tile01 {
 }
 
 .services .service-item .content {
+    flex-basis: 50%;
     padding: 10px;
 }
 
@@ -266,18 +481,36 @@ header #tile01 {
     z-index: 2;
     position: relative;
 }
-
-.services .service-item i {
+.services .service-item .arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--main-color);
     position: absolute;
     right: 20px;
     bottom: 10px;
     font-size: 24px;
     transition: 0.5s;
+
+}
+.services .service-item:hover .arrow {
+    transform: translateX(10px);
+}
+.services .service-item .arrow i {
+    font-size: 24px;
+}
+.services .service-item .arrow span{
+    font-size: 16px;
+    padding: 0px 0px 0px 10px;
 }
 
-.services .service-item:hover i {
-    transform: translateX(10px);
+@media(max-width:992px) {
+    .services .service-item .arrow i {
+        font-size: 20px;
+    }
+    .services .service-item .arrow span{
+        font-size: 12px;
+    }
 }
 
 /* services end*/
@@ -353,6 +586,7 @@ header #tile01 {
     transition: ease-out 0.3s;
     -webkit-transition: ease-out 0.3s;
     -moz-transition: ease-out 0.3s;
+
 }
 
 .btn:hover {
@@ -368,26 +602,6 @@ header #tile01 {
 .btn.whatsapp:hover {
     color: white;
     background: #4caf50;
-}
-
-.btn.facebook {
-    color: var(--main-color);
-    background: white;
-}
-
-.btn.facebook:hover {
-    color: white;
-    background: var(--main-color);
-}
-
-.btn.instagram {
-    color: #9c27b0;
-    background: white;
-}
-
-.btn.instagram:hover {
-    color: white;
-    background: #9c27b0;
 }
 
 /* contact end  */
