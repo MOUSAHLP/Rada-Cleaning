@@ -39,30 +39,32 @@
   </head>
   <body>
 
-    <div class="head">
-      <div class="content">
-        <div class="title">
+    <!-- header start  --> 
+    <header></header>
+    <!-- header end  --> 
 
-          <div class="logo">
-            <img src="image/logo.png" alt="logo" />
-          </div>
-          <div id="tile01">
-            <div id="mask">RADA</div>
-          </div>
+    <!-- start start -->
+    <div class="start">
+      <div class="container">
+        <div id="tile01">
+          <div id="mask">RADA</div>
         </div>
-        <div class="text">
-          Hier erhalten Sie einen Reinigungsservice durch ein professionelles und fachkundiges Team
-        </div>
-        <a href="http://wa.me/4915758662842">
-          <div class="btn whatsapp">
-            <span>
-              Fordern Sie den Service an
-            </span> 
-            <i class="fa-brands fa-whatsapp"></i>
-          </div>
-        </a>
+        <img src="image/logo.png" alt="logo" />
+        <p class="content">
+          Hier erhalten Sie einen Reinigungsservice durch ein professionelles
+          und fachkundiges Team
+        </p>
       </div>
+      <a href="http://wa.me/4915758662842">
+        <div class="btn whatsapp">
+          <span>
+            Fordern Sie den Service an
+          </span> 
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </a>
     </div>
+    <!-- start end -->
 
 
   <!-- popup start  -->
@@ -319,7 +321,7 @@
       </div>
     </div>
 
-    <div class="container map">
+    <div class="container map wow zoomIn" data-wow-delay="0.1s">
       <div class="mapouter">
         <div class="gmap_canvas">
           <iframe
@@ -352,6 +354,10 @@
       </div>
     </div>
     <!-- map end  -->
+    
+      <div id="loader" class="show">
+        <div class="loader"></div>
+      </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
